@@ -8,10 +8,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import junit.framework.Test;
-
-import org.w3c.dom.Text;
-
 /**
  * Activityのライフサイクルメソッドの動きを
  * Created by HAJIME on 2014/10/17.
@@ -191,7 +187,7 @@ public class MainActivitySuspendSimulationTest extends ActivityUnitTestCase<Main
         });
         getInstrumentation().waitForIdleSync();
 
-        // 2. Homeボタン押下からバックスタックへ引っ込むまで
+        // 2. スリープ発動からバックスタックへ引っ込むまで
         getInstrumentation().callActivityOnPause(activity);
         getInstrumentation().callActivityOnSaveInstanceState(activity, bundleInOut);
         getInstrumentation().callActivityOnStop(activity);
