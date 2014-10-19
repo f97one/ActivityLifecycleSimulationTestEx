@@ -1,6 +1,7 @@
 package net.formula97.activitylifecycletestex;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +26,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     private Button button;
     private Spinner spinner;
     private TextView textView2;
+    private Button button2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         button = (Button) findViewById(R.id.button);
         editText = (EditText) findViewById(R.id.editText);
         spinner = (Spinner) findViewById(R.id.spinner);
+        button2 = (Button) findViewById(R.id.button2);
 
         String[] spinnerItems = {
                 "item 1",
@@ -51,6 +54,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         spinner.setOnItemSelectedListener(this);
 
         button.setOnClickListener(this);
+        button2.setOnClickListener(this);
     }
 
     @Override
@@ -138,7 +142,15 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
     @Override
     public void onClick(View v) {
-        textView.setText(editText.getText());
-        editText.setText("");
+        switch (v.getId()) {
+            case R.id.button:
+                textView.setText(editText.getText());
+                editText.setText("");
+                break;
+            case R.id.button2:
+                Intent i = new Intent(this, LifecycleActivity.class);
+                startActivity(i);
+                break;
+        }
     }
 }
